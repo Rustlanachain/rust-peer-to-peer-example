@@ -181,7 +181,7 @@ async fn write_local_recipes(recipes: &Recipes) -> Result<()> {
     fs::write(STORAGE_FILE_PATH, &json).await?;
     Ok(())
 }
-
+//client
 #[tokio::main]
 async fn main() {
     pretty_env_logger::init();
@@ -224,7 +224,7 @@ async fn main() {
             .expect("can get a local socket"),
     )
     .expect("swarm can be started");
-
+//event loop
     loop {
         let evt = {
             tokio::select! {
@@ -257,7 +257,7 @@ async fn main() {
         }
     }
 }
-
+//event handler
 async fn handle_list_peers(swarm: &mut Swarm<RecipeBehaviour>) {
     info!("Discovered Peers:");
     let nodes = swarm.behaviour().mdns.discovered_nodes();
